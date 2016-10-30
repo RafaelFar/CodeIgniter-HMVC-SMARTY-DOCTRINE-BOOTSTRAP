@@ -21,7 +21,11 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('welcome_message');
+		//change time zone to any city to avoid warnings
+		date_default_timezone_set('Europe/Istanbul');
+		
 		$data['title'] = 'hello world';
-		 $this->parser->parse("welcome_message.tpl", $data);
+		$this->parser->clearAllCache();
+		$this->parser->parse("welcome_message.tpl", $data);
 	}
 }
